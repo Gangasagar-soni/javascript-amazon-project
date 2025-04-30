@@ -28,7 +28,7 @@ productsHTML += `<div class="product-container">
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selector-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -58,6 +58,7 @@ productsHTML += `<div class="product-container">
       });
 
      
+      console.log(quentity_selector)
 
         document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
@@ -73,6 +74,12 @@ Cart.forEach((item) => {
   }
 
 });
+
+
+let quentitySelector =  document.querySelector(`.js-quentity-selector-${productIld}`);
+
+const quentity = Number(quentitySelector.value);
+
 
 if(matchingItem){
   matchingItem.quantity += 1;
