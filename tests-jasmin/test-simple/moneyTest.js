@@ -1,4 +1,4 @@
-import formatCurrency from '../scripts/utils/money.js';
+import formatCurrency from '../../scripts/utils/money.js';
 console.log("test suite: formate currency")
 console.log("testing normal decimal")
 if (formatCurrency(2001) === '20.01'){
