@@ -35,6 +35,26 @@ class product{
   getprice() {
     return `$${formatCurrency(this.priceCents)}`;
   }
+  extrainfoHTML() {
+  return '';
+}
+}
+
+//here we can get an properties of product class into Clothing class by using inheritence.
+class Clothing extends product{ 
+  sizeChartLink;
+constructor(productDetail){
+super(productDetail);
+  this.sizeChartLink = productDetail.sizeChartLink;
+}
+
+extrainfoHTML(){
+  return `
+  <a href="${this.sizeChartLink}" target="_blank">
+  Size chart
+  </a>
+  `;
+}
 }
 
 //here we can use an class to arrange the objects.
@@ -699,5 +719,8 @@ export const products = [
     ]
   }
 ].map((productDetail) => {
+  if(productDetail.type === 'clothing'){
+    return new Clothing(productDetail);
+  }
 return new product(productDetail);
 });
