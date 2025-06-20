@@ -1,3 +1,5 @@
+import {formatCurrency} from '../scripts/utils/money.js'
+
 export function getProduct(productId){
   let matchingProduct;
 
@@ -10,6 +12,33 @@ export function getProduct(productId){
       return matchingProduct;
 }
 
+class product{
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+
+  constructor(productDetail){
+    this.id = productDetail.id;
+    this.image = productDetail.image;
+    this.name = productDetail.name;
+    this.rating = productDetail.rating;
+    this.priceCents = productDetail.priceCents;
+
+  }
+
+  getStarsurl(){
+    return   `images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+
+  getprice() {
+    return `$${formatCurrency(this.priceCents)}`;
+  }
+}
+
+//here we can use an class to arrange the objects.
+//the .map method are use to iterate through array element without interfearing original array
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -669,4 +698,6 @@ export const products = [
       "mens"
     ]
   }
-];
+].map((productDetail) => {
+return new product(productDetail);
+});
